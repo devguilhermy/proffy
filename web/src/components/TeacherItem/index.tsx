@@ -10,7 +10,7 @@ function TeacherItem() {
             <header>
                 <img src="https://avatars2.githubusercontent.com/u/55157846?s=400&u=0279c4d4bc44669d9aba39f79a4050c289c8f525&v=4" alt="Avatar do proffy" />
                 <div>
-                    <strong>Guilhermy Camargo</strong>
+                    <strong>Good Developer</strong>
                     <span>Programação com Javascript</span>
                 </div>
             </header>
