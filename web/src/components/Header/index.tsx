@@ -7,10 +7,13 @@ import backIcon from "../../assets/images/icons/back.svg";
 import logoImg from "../../assets/images/logo.svg";
 
 interface HeaderProps {
-    title: String
+    title: string,
+    subtitle?: string,
+    children?: any
 }
 
-const Header: React.FunctionComponent<HeaderProps> = ({children, title}) => {
+function Header(props: HeaderProps) {
+    const { title, children, subtitle } = props;
     return (
         <header className="page-header">
             <div className="top-bar-container">
@@ -21,7 +24,9 @@ const Header: React.FunctionComponent<HeaderProps> = ({children, title}) => {
             </div>
             <div className="header-content">
                 <strong>{title}</strong>
-                {children }
+                {subtitle && <p>{subtitle}</p>}
+                
+                {children}
             </div>
         </header>
     );
