@@ -2,17 +2,16 @@ import React, { FormEvent, useState } from "react";
 
 import api from "../../services/api";
 
-import "./styles.css"
+import "./styles.css";
 
 import Header from "../../components/Header";
-import TeacherItem, {Teacher} from "../../components/TeacherItem";
+import ClassItem, { Teacher } from "../../components/ClassItem";
 import Input from "../../components/Input";
 import Select from "../../components/Select";
 
 import searchIcon from "../../assets/images/icons/search.svg";
 
-
-function TeacherList() {
+function ClassList() {
     const [teachers, setTeachers] = useState([]);
 
     const [subject, setSubject] = useState("");
@@ -23,19 +22,18 @@ function TeacherList() {
         event.preventDefault();
 
         // try {
-            const response = await api.get("classes", {
-                params: {
-                    subject,
-                    week_day,
-                    time
-                }
-            });
+        const response = await api.get("classes", {
+            params: {
+                subject,
+                week_day,
+                time,
+            },
+        });
 
-            setTeachers(response.data.classes);
+        setTeachers(response.data.classes);
         // } catch (error) {
-            // alert(error)
+        // alert(error)
         // }
-
     }
 
     return (
@@ -46,8 +44,8 @@ function TeacherList() {
                         name="subject"
                         label="Matéria"
                         value={subject}
-                        onChange={event => {
-                            setSubject(event.target.value)
+                        onChange={(event) => {
+                            setSubject(event.target.value);
                         }}
                     />
                     <Select
@@ -60,11 +58,11 @@ function TeacherList() {
                             { value: "4", label: "Quinta-feira" },
                             { value: "5", label: "Sexta-feira" },
                             { value: "6", label: "Sábado" },
-                            { value: "7", label: "Domingo" }
+                            { value: "7", label: "Domingo" },
                         ]}
                         value={week_day}
-                        onChange={event => {
-                            setWeekDay(event.target.value)
+                        onChange={(event) => {
+                            setWeekDay(event.target.value);
                         }}
                     />
                     <Input
@@ -72,8 +70,8 @@ function TeacherList() {
                         name="time"
                         label="Horário"
                         value={time}
-                        onChange={event => {
-                            setTime(event.target.value)
+                        onChange={(event) => {
+                            setTime(event.target.value);
                         }}
                     />
                     <button type="submit">
@@ -81,21 +79,19 @@ function TeacherList() {
                     </button>
                 </form>
             </Header>
-            
+
             <main className="teachers-list">
-                {
-                    teachers.map((teacher: Teacher) => {
-                        return (
-                            <TeacherItem
-                                key={teacher.id}
-                                teacher={teacher}
-                            />
-                        )
-                    })
-                }
+                {teachers.map((teacher: Teacher) => {
+                    return (
+                        <ClassItem
+                            key={teacher.id}
+                            teacher={teacher}
+                        />
+                    );
+                })}
             </main>
         </div>
     );
 }
 
-export default TeacherList;
+export default ClassList;

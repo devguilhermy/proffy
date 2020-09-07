@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { FontAwesome5 } from "@expo/vector-icons";
 const { Navigator, Screen } = createBottomTabNavigator();
 
-import TeacherList from "../pages/TeacherList";
+import ClassList from "../pages/ClassList";
 import FavoriteList from "../pages/FavoriteList";
 
 function StudyTabs() {
@@ -37,8 +37,8 @@ function StudyTabs() {
             }}
         >
             <Screen
-                name="TeacherList"
-                component={TeacherList}
+                name="ClassList"
+                component={ClassList}
                 options={{
                     tabBarLabel: "Proffys",
                     tabBarIcon: ({ size, color, focused }) => {

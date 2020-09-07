@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import api from "../../services/api";
 
@@ -11,17 +11,11 @@ import studyIcon from "../../assets/images/icons/study.svg";
 import teachIcon from "../../assets/images/icons/give-classes.svg";
 import purpleHeartIcon from "../../assets/images/icons/purple-heart.svg";
 
-
 function Landing() {
     const [totalConnections, setTotalConnections] = useState(0);
 
-    // async function getConnections(){
-    //     const response = await api.get("/connections")
-    //     return response.data.total;
-    // }
-
     useEffect(() => {
-        api.get("/connections").then(response => {
+        api.get("/connections").then((response) => {
             setTotalConnections(response.data.total);
         });
     }, []);
@@ -41,18 +35,19 @@ function Landing() {
 
                 <div className="buttons-container">
                     <Link to="/study" className="study">
-                        <img src={studyIcon} alt="Estudar"/>
+                        <img src={studyIcon} alt="Estudar" />
                         Estudar
                     </Link>
                     <Link to="/teach" className="teach">
-                        <img src={teachIcon} alt="Ensinar"/>
+                        <img src={teachIcon} alt="Ensinar" />
                         Ensinar
                     </Link>
                 </div>
 
                 <span className="total-connections">
-                    Já foram realizadas {totalConnections} conexões pela plataforma
-                    <img src={purpleHeartIcon} alt="Coração roxo"/>
+                    Já foram realizadas {totalConnections} conexões
+                    pela plataforma
+                    <img src={purpleHeartIcon} alt="Coração roxo" />
                 </span>
             </div>
         </div>
